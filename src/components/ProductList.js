@@ -1,29 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../redux/actions';
+import { fetchProducts } from '../features/products/productsSlice';
+import { addToCart } from '../features/cart/cartSlice';
 import './ProductList.css';
 
 const ProductList = () => {
-  const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  const { items: products, status, error } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
+  if (status === 'loading') {
+    return <div>Cargando productos...</div>;
+  }
+
+  if (status === 'failed') {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="product-list">
-      {/* Título fuera del contenedor de los productos */}
       <h2>Productos Disponibles</h2>
-      
-      {/* Contenedor de los productos */}
       <div className="product-list-container">
         {products.map((product) => (
           <div className="product-item" key={product.id}>
             <img 
-              src={product.imageUrl} 
-              alt={product.name} 
+              src={product.image} 
+              alt={product.title} 
               className="product-image" 
+              width="100" 
             />
-            <p>{product.name}</p>
+            <p>{product.title}</p>
             <p>${product.price}</p>
-            <button onClick={() => dispatch(addToCart(product))}>
+            <button onClick={() => handleAddToCart(product)}>
               Agregar al carrito
             </button>
           </div>

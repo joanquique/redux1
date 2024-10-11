@@ -1,63 +1,57 @@
 .product-list {
-    margin: 20px 0;
-    display: block;
-    text-align: center; /* Asegura que todo el texto del contenedor esté centrado */
-  }
-  
-  .product-list h2 {
-    color: #333;
-    margin-bottom: 20px; /* Espacio entre el título y los productos */
-    font-size: 24px; /* Puedes ajustar el tamaño del texto según prefieras */
-  }
-  
-  .product-list-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
+  flex: 3;
+}
+
+.product-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+
+.product-item p {
+  margin: 5px 0;
+}
+
+.product-item button {
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.product-item button:hover {
+  background-color: #218838;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
   .product-item {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    border-radius: 8px;
-    width: 200px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    text-align: center;
-  }
-  
-  .product-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .product-item p {
-    margin: 10px 0;
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .product-item button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .product-item button:hover {
-    background-color: #0056b3;
-  }
-  
-  .product-image {
     width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    object-fit: cover;
+    max-width: 300px;
   }
-  
+}
