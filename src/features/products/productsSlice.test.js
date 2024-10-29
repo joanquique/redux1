@@ -11,7 +11,7 @@ const store = configureStore({
     products: productsReducer,
   },
   middleware: getDefaultMiddleware({
-    serializableCheck: false, // Puedes desactivar esto si necesitas evitar errores relacionados
+    serializableCheck: false, 
   }),
 });
 
